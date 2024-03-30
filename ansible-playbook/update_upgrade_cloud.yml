@@ -7,14 +7,18 @@
   vars:
     ansible_become_flags: '-H'
   tasks:
-# Not using the apt moudle because of issue https://github.com/ansible/ansible/issues/51663
+    # Not using the apt moudle because of issue https://github.com/ansible/ansible/issues/51663
     - name: Upgrade all package
       shell: "/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt full-upgrade --auto-remove"
       become: true
       register: apt_output
 
-    - name: Display apt update and full-upgrade stdout
-      debug:
-        var: apt_output.stdout_lines
-   
+    - name: Check if reboot is needed
+      command: needs-restart
+      register: needs_restart
+      changed_when: False
+      ignore_errors: True
 
+    - name: Display reboot required status
+      debug:
+        msg: "Reboot is needed: {{ 'yes' if needs_restart.rc == 0 else 'no' }}"
