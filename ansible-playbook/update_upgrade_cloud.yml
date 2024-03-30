@@ -1,0 +1,20 @@
+---
+- name: Update and upgrade cloud server
+  hosts: cloud
+  become: yes
+  become_user: ansible
+  become_method: sudo
+  vars:
+    ansible_become_flags: '-H'
+  tasks:
+# Not using the apt moudle because of issue https://github.com/ansible/ansible/issues/51663
+    - name: Upgrade all package
+      shell: "/usr/bin/sudo /usr/bin/apt update && /usr/bin/sudo /usr/bin/apt full-upgrade --auto-remove"
+      become: true
+      register: apt_output
+
+    - name: Display apt update and full-upgrade stdout
+      debug:
+        var: apt_output.stdout_lines
+   
+
