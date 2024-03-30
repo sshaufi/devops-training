@@ -1,0 +1,14 @@
+---
+- name: Update and upgrade cloud server
+  hosts: ss
+  become: yes
+  become_user: ansible
+  become_method: doas
+  tasks:
+    - name: Update package database
+      pkgng:
+       state: latest
+
+    - name: Upgrade installed packages
+      pkgng:
+        state: latest
