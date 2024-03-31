@@ -1,5 +1,0 @@
-[cloud]
-cloud.ss.fish ansible_user=ansible
-
-[ss]
-ss.fish ansible_user=ansible
