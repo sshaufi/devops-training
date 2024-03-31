@@ -1,14 +1,8 @@
 ---
-- name: Update and upgrade cloud server
+- name: Update OpenBSD packages
   hosts: ss
   become: yes
   become_user: ansible
-  become_method: doas
   tasks:
-    - name: Update package database
-      pkgng:
-       state: latest
-
-    - name: Upgrade installed packages
-      pkgng:
-        state: latest
+    - name: Update packages
+      command: /usr/bin/doas /usr/sbin/pkg_add -u
