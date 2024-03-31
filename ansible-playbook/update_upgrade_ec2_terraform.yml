@@ -1,6 +1,6 @@
 ---
 - name: Update and upgrade cloud server
-  hosts: cloud
+  hosts: ec2
   become_user: ansible
   environment:
     DEBIAN_FRONTEND: noninteractive
