@@ -1,2 +1,6 @@
 # Ignore compiled files
 ansible-playbook/hosts
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.backup
+terraform/terraform.tfstate.d/
