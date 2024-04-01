@@ -12,7 +12,7 @@ root_used = format(disk.used/1024**3,".1f")
 
 # General
 print("Hostname: ", os.popen("hostname").read().strip())
-print("Kernel:" ,platform.uname().version)
+print("Kernel:" ,platform.system())
 # Using uptime instead, psutil boot_time() is hard parse, will use fully awk instead of cut
 print("Uptime:", os.popen("uptime| awk -F ',' '{print $1}'|awk -F 'up' '{ print $2 }'|sed 's/ //g'").read().strip())
 print("CPU (%):", psutil.cpu_percent(0.5))
