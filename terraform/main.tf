@@ -20,6 +20,4 @@ resource "aws_instance" "DevOps-Training" {
     echo 'ansible ALL=(ALL) NOPASSWD: /usr/bin/apt, /usr/bin/apt-get' | sudo tee /etc/sudoers.d/ansible
     sudo apt-get -y install python3-psutil
   EOF
-
-
 }

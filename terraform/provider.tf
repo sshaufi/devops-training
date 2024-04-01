@@ -7,7 +7,6 @@ terraform {
   }
 }
 
-# Configure the AWS Provider
 provider "aws" {
   region = "ap-southeast-2"
 }
@@ -22,12 +21,10 @@ resource "aws_route_table" "terraform" {
   }
 }
 
-
 resource "aws_security_group" "terraform" {
   name        = "SSHAccess"
   description = "Allow SSH access"
 
-  // Inbound rule to allow SSH access from anywhere
   ingress {
     from_port   = 22
     to_port     = 22
@@ -35,7 +32,6 @@ resource "aws_security_group" "terraform" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  // Outbound rule to allow all traffic
   egress {
     from_port   = 0
     to_port     = 0
@@ -43,4 +39,3 @@ resource "aws_security_group" "terraform" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
-

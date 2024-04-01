@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-import pandas as pd
+import csv
 
-df = pd.read_csv('./ansible-playbook/hosts.csv')
+with open('./ansible-playbook/hosts.csv', 'r') as csvfile, open('./ansible-playbook/hosts','w') as ini:
+       reader = csv.DictReader(csvfile)
 
-with open('./ansible-playbook/hosts', 'w') as file:
-       for _, row in df.iterrows():
-            file.write(f'[')
-            file.write(f'{row["group"]}')
-            file.write(f']\n')
-            file.write(f'{row["hostname"]} ansible_user={row["ansible_user"]}\n\n')
+       for row in reader:
+            ini.write(f'[')
+            ini.write(f'{row["group"]}')
+            ini.write(f']\n')
+            ini.write(f'{row["hostname"]} ansible_user={row["ansible_user"]}\n\n')
 

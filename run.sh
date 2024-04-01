@@ -13,7 +13,6 @@ ec2create(){
 
 }
 
-
 sys_update(){
     echo '-------------------------------------------------------'
     echo 'Updating all of my servers including the new EC2 server'

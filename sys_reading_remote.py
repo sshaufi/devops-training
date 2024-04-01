@@ -3,7 +3,6 @@
 import paramiko
 import csv
 
-# Define SSH credentials and hostnames
 private_key_path = '/Users/ss/.ssh/id_ed25519'
 
 # Define the local and remote paths for the Python script
@@ -46,14 +45,13 @@ def get_system_usage(hostname, username):
         return str(e)
 
 
+# Iterate over hosts.csv file
 with open('./ansible-playbook/hosts.csv', 'r') as file:
     reader = csv.DictReader(file)
 
     for row in reader:
-        print("System usage for row ",row['group'],":")
+        print("-" * 50)
+        print("System usage for ",row['group'],":")
         system_usage = get_system_usage(row['hostname'], row['ansible_user'])
         print(system_usage)
-        print("-" * 50)
-
-
 
