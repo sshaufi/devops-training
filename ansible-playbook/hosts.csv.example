@@ -1,0 +1,4 @@
+group,hostname,ansible_user
+cloud,cloud.ss.fish,ansible
+ss,ss.fish,ansible
+ec2,3.26.206.73,ansible
