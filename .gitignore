@@ -1,4 +1,3 @@
-# Ignore compiled files
 ansible-playbook/hosts
 ansible-playbook/hosts.csv
 terraform/.terraform.lock.hcl
