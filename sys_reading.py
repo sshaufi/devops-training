@@ -16,7 +16,6 @@ print("Mem Used (GB):", format(psutil.virtual_memory()[3]/1024**3, ".1f"),"/",fo
 
 # Network
 card_ips = (os.popen("ifconfig|awk ' /inet / && /broadcast/ {print $2 } '").read().strip())
-
 card_ips_clean = card_ips.replace("\n",", ")
 print("Network Card IPs:", card_ips_clean)
 

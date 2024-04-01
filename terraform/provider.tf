@@ -11,6 +11,8 @@ provider "aws" {
   region = "ap-southeast-2"
 }
 
+
+# Need to specify VPC, Internet Gateway, and Security Group for ssh connection to work when create with terraform.
 resource "aws_route_table" "terraform" {
   vpc_id = "vpc-025e30832fbec6fea"
 

@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import csv
 
 with open('./ansible-playbook/hosts.csv', 'r') as csvfile, open('./ansible-playbook/hosts','w') as ini:

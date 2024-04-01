@@ -33,7 +33,6 @@ sys_update(){
     done
 }
 
-
 sys_stats(){
     echo '-------------------------'
     echo 'Status of all the servers'

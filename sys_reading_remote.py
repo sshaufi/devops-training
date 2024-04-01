@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import paramiko
 import csv
 
@@ -27,7 +26,6 @@ def get_system_usage(hostname, username):
         else:
             ssh_client.connect(hostname, username=username, pkey=private_key, port='22')
 
-
         # Transfer Python script to remote server
         sftp_client = ssh_client.open_sftp()
         sftp_client.put(local_python_script_path, remote_python_script_path)
@@ -43,7 +41,6 @@ def get_system_usage(hostname, username):
         return output
     except Exception as e:
         return str(e)
-
 
 # Iterate over hosts.csv file
 with open('./ansible-playbook/hosts.csv', 'r') as file:
