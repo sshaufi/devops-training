@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
-import paramiko
 
+import paramiko
+import csv
 
 # Define SSH credentials and hostnames
 private_key_path = '/Users/ss/.ssh/id_ed25519'
-ssh_credentials = {
-    'cloud.ss.fish': {'username': 'ansible', 'port':22},
-    'ss.fish': {'username': 'ansible', 'port':7394}
-}
 
 # Define the local and remote paths for the Python script
 local_python_script_path = './sys_reading.py'
 remote_python_script_path = '/tmp/sys_reading.py'
 
 # Function to connect via SSH and get system usage
-def get_system_usage(hostname, username, port):
+def get_system_usage(hostname, username):
     try:
         # SSH Connection
         ssh_client = paramiko.SSHClient()
@@ -24,7 +21,13 @@ def get_system_usage(hostname, username, port):
         private_key = paramiko.Ed25519Key.from_private_key_file(private_key_path)
         
         # Connect using SSH key
-        ssh_client.connect(hostname, username=username, pkey=private_key, port=port)
+        
+        if ":" in hostname:
+            conn = hostname.split(":")
+            ssh_client.connect(conn[0], username=username, pkey=private_key, port=conn[1])
+        else:
+            ssh_client.connect(hostname, username=username, pkey=private_key, port='22')
+
 
         # Transfer Python script to remote server
         sftp_client = ssh_client.open_sftp()
@@ -43,10 +46,14 @@ def get_system_usage(hostname, username, port):
         return str(e)
 
 
-print("-" * 50)
-for hostname, creds in ssh_credentials.items():
-    print(f"System usage for {hostname}:")
-    system_usage = get_system_usage(hostname, creds['username'], creds['port'])
-    print(system_usage)
-    print("-" * 50)
+with open('./ansible-playbook/hosts.csv', 'r') as file:
+    reader = csv.DictReader(file)
+
+    for row in reader:
+        print("System usage for row ",row['group'],":")
+        system_usage = get_system_usage(row['hostname'], row['ansible_user'])
+        print(system_usage)
+        print("-" * 50)
+
+
 
