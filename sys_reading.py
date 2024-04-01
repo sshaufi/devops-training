@@ -3,6 +3,7 @@ import os
 import platform
 import psutil
 
+
 # Variable
 private_ip = (os.popen("ifconfig|awk ' /inet / && /broadcast/ {print $2 } '").read().strip())
 
@@ -28,6 +29,3 @@ print("Public IP:", os.popen("curl -s ifconfig.me").read().strip())
 print("Disk Usage '/' (GB):",root_used,"/",root_total)
 
 # Last Update
-
-
-
