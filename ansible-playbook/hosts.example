@@ -3,3 +3,6 @@ cloud.ss.fish ansible_user=ansible
 
 [ss]
 ss.fish ansible_user=ansible
+
+[ec2]
+3.25.171.114 ansible_user=ansible
