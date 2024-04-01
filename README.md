@@ -18,7 +18,7 @@ Since I try to keep it simple, I will keep the scripts and codes with minimal de
 
 This for reference
 | Name| Hostname|os| Comments|
-| ----------- | ----------- |
+| ----------- | ----------- |---------|-------|
 | cloud| cloud.ss.fish|Ubuntu| My personal cloud server|
 | ss| ss.fish|OpenBSD|My personal OpenBSD server|
 | ec2| aws-ip| Ubuntu|This serve will be created on AWS EC2 instance|
