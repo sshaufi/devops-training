@@ -5,9 +5,8 @@ import paramiko
 # Define SSH credentials and hostnames
 private_key_path = '/Users/ss/.ssh/id_ed25519'
 ssh_credentials = {
-    'cloud.ss.fish': {'username': 'ansible', 'private_key': private_key_path, 'port':22},
-    'ss.fish': {'username': 'ansible', 'private_key': private_key_path, 'port':7394}
-#    ,'ss.fish': {'username': 'ansible', 'private_key': private_key_path, 'port':7394}
+    'cloud.ss.fish': {'username': 'ansible', 'port':22},
+    'ss.fish': {'username': 'ansible', 'port':7394}
 }
 
 # Define the local and remote paths for the Python script
@@ -15,14 +14,14 @@ local_python_script_path = './sys_reading.py'
 remote_python_script_path = '/tmp/sys_reading.py'
 
 # Function to connect via SSH and get system usage
-def get_system_usage(hostname, username, private_key_v, port):
+def get_system_usage(hostname, username, port):
     try:
         # SSH Connection
         ssh_client = paramiko.SSHClient()
         ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         
         # Load SSH private key
-        private_key = paramiko.Ed25519Key.from_private_key_file(private_key_v)
+        private_key = paramiko.Ed25519Key.from_private_key_file(private_key_path)
         
         # Connect using SSH key
         ssh_client.connect(hostname, username=username, pkey=private_key, port=port)
@@ -47,7 +46,7 @@ def get_system_usage(hostname, username, private_key_v, port):
 print("-" * 50)
 for hostname, creds in ssh_credentials.items():
     print(f"System usage for {hostname}:")
-    system_usage = get_system_usage(hostname, creds['username'], creds['private_key'], creds['port'])
+    system_usage = get_system_usage(hostname, creds['username'], creds['port'])
     print(system_usage)
     print("-" * 50)
 
