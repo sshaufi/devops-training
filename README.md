@@ -13,18 +13,68 @@ This repository serves as a platform for my personal DevOps training, showcasing
 5. **Keep it Simple:** I am aiming to make the scripts and codes as simple and readable as possible.
 
 ### Solution
-Explaining what all of these do
+Since I try to keep it simple
 
-I will use ansible
+#### Servers Updates
 
+To update all of the servers
+
+- ansible
+- python (csv module)
+
+term
+: definition
+
+#### Automated AWS EC2 Setup:
+- terraform
 Using terraform for ec2
-Using ansible for update
+
+```
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+
+#### Remote Server Monitoring:
+- python (os, platfrom, psutil, and paramiko)
 Using Python for system stats mainly using psutil library
-Using bash script to connect all
 
+ I need to highlight these ==very important words==.
+
+#### Simple Execution:
+- shell script
+
+> Dorothy followed her through many of the beautiful rooms in her castle.
+>> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
 ### Usage
-Explainging Terraform in detail
+#### Updates With Ansible
+> #### The quarterly results look great!
+>
+> - Revenue was off the chart.
+> - Profits were higher than ever.
+>
+>  *Everything* is going according to **plan**.
 
-Explaining Ansible in Detail
+#### Creating and Destroying EC2 Instance with Terraform
+- First item
+- Second item
+- Third item
+- Fourth item
 
-Explaining system reading in detail
+
+#### Running sys_reading.py remotely with sys_reading_remote.py
+My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+
+#### Connecting all together
+The background color is `#ffffff` for light mode and `#000000` for dark mode.
+
+
+[Contribution guidelines for this project](ansible-playbook/update_upgrade_cloud.yml)
+
+
+![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
+
+
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
