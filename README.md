@@ -24,19 +24,18 @@ Throughout this README, I will reference three servers. Please refer to the tabl
 | ec2| | Ubuntu|This server will be created on an AWS EC2 instance|
 
 ### Servers Updates
-To update all of the servers **ansible** and **python** script will be use. Python script is needed to convert csv file to ini for inventory. For automation I list all of my server in csv format, so other script can parse it easily.
-
+To update all servers, I'll employ both **Ansible** and **Python** scripts. The **Python** script is crucial for converting the CSV file into an INI format for the **Ansible** inventory. Since servers are listed in a CSV file for other automation purposes, it's necessary.
 
 **Ansible Playbooks:**
 1. Playbook for cloud server[ansible-playbook/update_upgrade_cloud.yml](ansible-playbook/update_upgrade_cloud.yml)
 2. Playbook for ss server [ansible-playbook/update_upgrade_ss.yml](ansible-playbook/update_upgrade_ss.yml)
 3. Playbook for ec2 server [ansible-playbook/update_upgrade_ec2.yml](ansible-playbook/update_upgrade_ec2.yml)
 
-On all three of the servers, the playbook will run using ansible user that I created for security purpose. The user can run  
+On all three of the servers, the playbook will run as ansible user that I created for security purpose. The user can run specifics command without password when they run the command with sudo and doas as I manually configured. 
 
 Note that on both cloud and ec2 server playbook I dont use the apt module instead I run the command manually on ansible playbook its because of [ansible github issue #51663](https://github.com/ansible/ansible/issues/51663). 
 
-The inventory is here server[ansible-playbook/update_upgrade_cloud.yml](ansible-playbook/update_upgrade_cloud.yml) and will be convert by the script [ansible-playbook/update_upgrade_cloud.yml](ansible-playbook/update_upgrade_cloud.yml) and be change to Playbook for ss server [ansible-playbook/update_upgrade_ss.yml](ansible-playbook/update_upgrade_ss.yml). This script will be run if using the run.sh command, and also can be manually run. run.sh command will be explain in other sections.
+The inventory is here server[ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.example) and will be convert by the script [csv_to_ini.py](csv_to_ini.py) and be change to  [ansible-playbook/hosts](ansible-playbook/hosts). This script will be run if using the run.sh command, and also can be manually run. run.sh command will be explain in other sections.
 
 
 ### Automated AWS EC2 Setup:
