@@ -13,24 +13,31 @@ This repository serves as a platform for my personal DevOps training, showcasing
 5. **Keep it Simple:** I am aiming to make the scripts and codes as simple and readable as possible.
 
 ## Solution
-Since I try to keep it simple, I will keep the scripts and codes with minimal depedency and short as possible. Its also need to be readable enough without needing  a lot of comments. I will explain the solution 
+Since I try to keep it simple, I aim to maintain the scripts and code with minimal dependencies possible. Additionally, it's important that they remain readable without excessive commenting. I will thoroughly explain the solution on each section.
 
+Throughout this README, I will reference three servers. Please refer to the table below. I will refer to the servers by their names.
 
-This for reference
 | Name| Hostname|os| Comments|
 | ----------- | ----------- |---------|-------|
 | cloud| cloud.ss.fish|Ubuntu| My personal cloud server|
 | ss| ss.fish|OpenBSD|My personal OpenBSD server|
-| ec2| aws-ip| Ubuntu|This serve will be created on AWS EC2 instance|
+| ec2| | Ubuntu|This server will be created on an AWS EC2 instance|
+
 ### Servers Updates
-
-To update all of the servers **ansible** and **python** script will be use. Python script is needed to convert csv file to ini for inventory. For automation I list all of my server in csv format. 
-
+To update all of the servers **ansible** and **python** script will be use. Python script is needed to convert csv file to ini for inventory. For automation I list all of my server in csv format, so other script can parse it easily.
 
 
+**Ansible Playbooks:**
+1. Playbook for cloud server[ansible-playbook/update_upgrade_cloud.yml](ansible-playbook/update_upgrade_cloud.yml)
+2. Playbook for ss server [ansible-playbook/update_upgrade_ss.yml](ansible-playbook/update_upgrade_ss.yml)
+3. Playbook for ec2 server [ansible-playbook/update_upgrade_ec2.yml](ansible-playbook/update_upgrade_ec2.yml)
 
-Ansible Playbook
-[Contribution guidelines for this project](ansible-playbook/update_upgrade_cloud.yml)
+On all three of the servers, the playbook will run using ansible user that I created for security purpose. The user can run  
+
+Note that on both cloud and ec2 server playbook I dont use the apt module instead I run the command manually on ansible playbook its because of [ansible github issue #51663](https://github.com/ansible/ansible/issues/51663). 
+
+The inventory is here server[ansible-playbook/update_upgrade_cloud.yml](ansible-playbook/update_upgrade_cloud.yml) and will be convert by the script [ansible-playbook/update_upgrade_cloud.yml](ansible-playbook/update_upgrade_cloud.yml) and be change to Playbook for ss server [ansible-playbook/update_upgrade_ss.yml](ansible-playbook/update_upgrade_ss.yml). This script will be run if using the run.sh command, and also can be manually run. run.sh command will be explain in other sections.
+
 
 ### Automated AWS EC2 Setup:
 - terraform
