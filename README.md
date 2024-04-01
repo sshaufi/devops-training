@@ -27,34 +27,33 @@ Throughout this README, I will reference three servers. Please refer to the tabl
 To update all servers, I'll employ both **Ansible** and **Python** scripts. The **Python** script is crucial for converting the CSV file into an INI format for the **Ansible** inventory. Since servers are listed in a CSV file for other automation purposes, it's necessary.
 
 **Ansible Playbooks:**
-1. Update and check if reboot is needed cloud server [ansible-playbook/update_upgrade_cloud.yml](ansible-playbook/update_upgrade_cloud.yml)
-2. Update all the package on ss server [ansible-playbook/update_upgrade_ss.yml](ansible-playbook/update_upgrade_ss.yml)
-3. Update and check if reboot is needed on ec2 server [ansible-playbook/update_upgrade_ec2.yml](ansible-playbook/update_upgrade_ec2.yml)
+1. Update and check if reboot is needed on cloud server: [ansible-playbook/update_upgrade_cloud.yml](ansible-playbook/update_upgrade_cloud.yml)
+2. Update all the package on ss server: [ansible-playbook/update_upgrade_ss.yml](ansible-playbook/update_upgrade_ss.yml)
+3. Update and check if reboot is needed on ec2 server: [ansible-playbook/update_upgrade_ec2.yml](ansible-playbook/update_upgrade_ec2.yml)
 
 On all three servers, the playbook will run as the user named 'ansible,' which I created for security purposes. This user can execute specific commands without a password when using sudo and doas, as I have manually configured.
 
-Please note that on both the cloud and ec2 server playbooks, I do not use the apt module. Instead, I manually run the command in the Ansible playbook due to [this GitHub issue #51663](https://github.com/ansible/ansible/issues/51663). Additionally, in both server playbooks, it will check if a reboot is needed after every update and upgrade.
+Please note that on both the cloud and ec2 server playbooks, I do not use the apt module. Instead, I manually run the command in the Ansible playbook due to [this GitHub issue #51663](https://github.com/ansible/ansible/issues/51663). Additionally, in both server playbooks, it will check if a reboot is needed after every update.
 
 The inventory is located here: [ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.example) and will be converted by the script [csv_to_ini.py](csv_to_ini.py) to [ansible-playbook/hosts](ansible-playbook/hosts). This script will run automatically when using the `run.sh` command and can also be executed manually. Further details on the `run.sh` command will be explained on further section.
 
 
 ### Automated AWS EC2 Setup:
-- terraform
-Using terraform for ec2
+To create EC2 instance in AWS I utilized **Terraform** and **aws-cli**. **aws-cli** is only need for authentication. To make this work I created three files provider.tf, main.tf, and output.tf:
 
-```
-{
-  "firstName": "John",
-  "lastName": "Smith",
-  "age": 25
-}
-```
+**1. [terraform/provider.tf](terraform/provider.tf)**
+
+**2. [terraform/maiin.tf](terraform/main.tf)**
+
+**3. [terraform/output.tf](terraform/output.tf)**
+
 
 ### Remote Server Monitoring:
-- python (os, platfrom, psutil, and paramiko)
-Using Python for system stats mainly using psutil library
+To create EC2 instance in AWS I utilized **Terraform** and **aws-cli**. **aws-cli** is only need for authentication. To make this work I created three files provider.tf, main.tf, and output.tf:
 
- I need to highlight these ==very important words==.
+**1. [sys_reading.py](sys_reading.py)**
+**2. [sys_reading_remote.py](sys_reading_remote.py)**
+
 
 ### Simple Execution:
 - shell script
@@ -75,6 +74,18 @@ Using Python for system stats mainly using psutil library
 - Second item
 - Third item
 - Fourth item
+
+```
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
+- python (os, platfrom, psutil, and paramiko)
+Using Python for system stats mainly using psutil library
+
+ I need to highlight these ==very important words==.
 
 
 ### Running sys_reading.py remotely with sys_reading_remote.py
