@@ -98,15 +98,14 @@ This script is currently incomplete and somewhat messy. In the future, I plan to
 However, if I end up adding too many features, it might be more efficient to use other specialized tools that can handle these tasks more effectively than a custom script. Nevertheless, this script serves as a valuable practice exercise for me to improve my skills and expanding my knowledge in the realm of DevOps.
 
 2. **[sys_reading_remote.py](sys_reading_remote.py)**
-The script [sys_reading.py](sys_reading.py), dont have the ability to ssh into server and parse csv files and, I do not plan to add it in since the script is quite messy adding it make it look quite messy, in the future I might combine both of this script.
+The script [sys_reading.py](sys_reading.py) lacks the capability to SSH into servers and parse CSV files. I do not intend to add this functionality as it would complicate the script further as its already look messy. Additionally, this script is separated because it will execute sys_reading.py on the hosts themselves. In the future, I may consider combining both scripts.
 
-This script will parse [ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.example) and ssh into each of the host mention in it and run `sys_reading.py` script locally.
+This script parses [ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.example) and SSHs into each host listed in it to execute the `sys_reading.py` script locally.
 
+Initially, I intended to use the pandas library for parsing the CSV file. However, I discovered that Python's built-in csv module functions well for small datasets and offers cleaner code. As a result, I opted to switch to the csv library instead of pandas.
 
 ### Simple Execution:
-- shell script
-
-
+To simplify operations I connect all of the functinality above using a single shell script [run.sh/run.sh]
 
 ## Usage
 ### Updates With Ansible
