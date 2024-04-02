@@ -75,7 +75,7 @@ This way, I can run the script without specifying python3 or python in front of 
 This script was created with the assistance of the [psutil documentation](https://psutil.readthedocs.io/en/latest/).  It displays various system metrics, including Hostname, Platform, Uptime, CPU usage, Memory usage, Network Card IPs, Public IP, and Root disk usage.
 
 **Using Psutil**
-- **Cpu Reading:**Utilizes `psutil.cpu_percent()` to obtain CPU usage in percentage with half-second readings for quick updates.
+- **Cpu Reading:** Utilizes `psutil.cpu_percent()` to obtain CPU usage in percentage with half-second readings for quick updates.
 - **Memory usage:** Retrieves memory usage information using `psutil.virtual_memory()`.
 - **Root disk usage:** Obtains disk usage for the root partition using `psutil.disk_usage()`.
 
@@ -88,8 +88,17 @@ This script was created with the assistance of the [psutil documentation](https:
 **Using Platform**
 - **Platform:** Retrieves the hostname using the standard Unix hostname command.
 
+This script is currently incomplete and somewhat messy. In the future, I plan to improve it by adding the following readings and features:
+
+- Disk usage statistics for all storage partitions.
+- Last system update information.
+- Detection of security vulnerabilities in the kernel and installed packages.
+- Implementation of email alerts for high resource usage.
+
+However, if I end up adding too many features, it might be more efficient to use other specialized tools that can handle these tasks more effectively than a custom script. Nevertheless, this script serves as a valuable practice exercise for me to improve my skills and expanding my knowledge in the realm of DevOps.
 
 2. **[sys_reading_remote.py](sys_reading_remote.py)**
+
 
 
 
