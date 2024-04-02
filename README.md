@@ -59,22 +59,35 @@ To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. 
     - Provides the instance IP as output after it successfully creates the instance. I do not plan to use a fixed IP to save costs, so this is necessary for other automation scripts.
 
 
-
-
 ### Remote Server Monitoring:
-To create EC2 instance in AWS I utilized **Terraform** and **aws-cli**. **aws-cli** is only need for authentication. To make this work I created three files provider.tf, main.tf, and output.tf:
+To remotely monitor all the servers system statistic I will use the `Python' script library psutil for the system statistic reading and paramiko to connect ssh connect remotely to server.
 
-**1. [sys_reading.py](sys_reading.py)**
-**2. [sys_reading_remote.py](sys_reading_remote.py)**
+Originally I want create the system reading from scratch by using available Unix tools and parse it, but tha will make things more complicated as I want to use this script on three different platforms (Linux, OpenBSD, and Darwin (MacOS)), in this case its more simpler to use psutil module instead as its already work on all of those platform. 
+
+
+I like to start most of my script with shebang to env, like below. 
+```
+#!/usr/bin/env python3
+```
+So I can run the script without specifying python3/python infront of it, using env also making sure os will pick the right python version/program, and on some platform python is not always on similar path.
+
+1. **[sys_reading.py](sys_reading.py)**
+
+I make this script with the help of [psutil documentation](https://psutil.readthedocs.io/en/latest/). This script will, will show Hostname, platform, Uptime, CPU usage, Memory usage, Network Card IPs, Public IP, and Root disk usage.
+
+Uptime, Network Card IPs, and Public IP
+
+2. **[sys_reading_remote.py](sys_reading_remote.py)**
 
 
 ### Simple Execution:
 - shell script
 
-> Dorothy followed her through many of the beautiful rooms in her castle.
->> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
+
+
 ## Usage
-#### Updates With Ansible
+### Updates With Ansible
+
 > #### The quarterly results look great!
 >
 > - Revenue was off the chart.
@@ -87,6 +100,10 @@ To create EC2 instance in AWS I utilized **Terraform** and **aws-cli**. **aws-cl
 - Second item
 - Third item
 - Fourth item
+
+
+> Dorothy followed her through many of the beautiful rooms in her castle.
+>> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
 
 ```
 {
@@ -104,7 +121,7 @@ Using Python for system stats mainly using psutil library
 ### Running sys_reading.py remotely with sys_reading_remote.py
 My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
 
-### Connecting all together
+### Connect it all together
 The background color is `#ffffff` for light mode and `#000000` for dark mode.
 
 
