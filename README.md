@@ -60,24 +60,37 @@ To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. 
 
 
 ### Remote Server Monitoring:
-To remotely monitor all the servers system statistic I will use the `Python' script library psutil for the system statistic reading and paramiko to connect ssh connect remotely to server.
+To remotely monitor system statistics on all servers, I'll utilize the psutil **Python** library for reading system statistics and paramiko for establishing SSH connections remotely.
 
-Originally I want create the system reading from scratch by using available Unix tools and parse it, but tha will make things more complicated as I want to use this script on three different platforms (Linux, OpenBSD, and Darwin (MacOS)), in this case its more simpler to use psutil module instead as its already work on all of those platform. 
+Originally, I planned to create the system reader from scratch using available Unix tools and parsing, but this approach would complicate things, especially since I intend to use this script on three different platforms (Linux, OpenBSD, and Darwin [MacOS]). Instead, it's simpler to use the psutil module since it already works across all these platforms.
 
-
-I like to start most of my script with shebang to env, like below. 
+I prefer to start most of my scripts with a shebang to env, like below:
 ```
 #!/usr/bin/env python3
 ```
-So I can run the script without specifying python3/python infront of it, using env also making sure os will pick the right python version/program, and on some platform python is not always on similar path.
+This way, I can run the script without specifying python3 or python in front of it. Using env also ensures that the OS will pick the correct Python version/program, and since Python isn't always located in the same path on every platform, this approach is more robust.
 
 1. **[sys_reading.py](sys_reading.py)**
 
-I make this script with the help of [psutil documentation](https://psutil.readthedocs.io/en/latest/). This script will, will show Hostname, platform, Uptime, CPU usage, Memory usage, Network Card IPs, Public IP, and Root disk usage.
+This script was created with the assistance of the [psutil documentation](https://psutil.readthedocs.io/en/latest/).  It displays various system metrics, including Hostname, Platform, Uptime, CPU usage, Memory usage, Network Card IPs, Public IP, and Root disk usage.
 
-Uptime, Network Card IPs, and Public IP
+**Using Psutil**
+- **Cpu Reading:**Utilizes `psutil.cpu_percent()` to obtain CPU usage in percentage with half-second readings for quick updates.
+- **Memory usage:** Retrieves memory usage information using `psutil.virtual_memory()`.
+- **Root disk usage:** Obtains disk usage for the root partition using `psutil.disk_usage()`.
+
+**Using Unix tools**
+- **Uptime:** Parses system uptime using the typical Unix uptime command, processed with awk and sed. Although I couldn't find a straightforward way to use `psutil.boot_time()`, I may revisit this approach in the future.
+- **Network Card IPs:** Extracts IP addresses from network interfaces using the typical Unix ifconfig command and parses the output with awk.
+- **Public IP:** Retrieves the public IP address by querying the ifconfig.me website using curl.
+- **Hostname:** just to keep this consistant I'll be using the standard Unix `hostname` command.
+
+**Using Platform**
+- **Platform:** Retrieves the hostname using the standard Unix hostname command.
+
 
 2. **[sys_reading_remote.py](sys_reading_remote.py)**
+
 
 
 ### Simple Execution:

@@ -2,10 +2,9 @@
 import os
 import platform
 import psutil
-import socket
 
 # General
-print("Hostname:",socket.gethostname())
+print("Hostname: ", os.popen("hostname").read().strip())
 print("Platform:" ,platform.system())
 
 
