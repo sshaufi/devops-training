@@ -39,13 +39,26 @@ The inventory is located here: [ansible-playbook/hosts.csv](ansible-playbook/hos
 
 
 ### Automated AWS EC2 Setup:
-To create EC2 instance in AWS I utilized **Terraform** and **aws-cli**. **aws-cli** is only need for authentication. To make this work I created three files provider.tf, main.tf, and output.tf:
+To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. **aws-cli** is only needed for authentication and connection to my **AWS** account. To make this work, I created three files: `provider.tf`, `main.tf`, and `output.tf`. Let me explain what each of these files does:
 
 **1. [terraform/provider.tf](terraform/provider.tf)**
+    - Specifies `hashicorp/aws` as the provider so Terraform will work with AWS.
+    - Sets the region to Sydney (`ap-southeast-2`).
+    - Sets up the VPC, Internet Gateway, and creates the Security Group to allow SSH connection.
+      - All of this is needed for it to connect to the internet and for SSH to work.
 
-**2. [terraform/maiin.tf](terraform/main.tf)**
+**2. [terraform/main.tf](terraform/main.tf)**
+    - Sets the EC2 AMI to `ami-09c8d5d747253fb7a` (Ubuntu 22.04 LTS, x86), sets the instance type to `t2.micro`, and names it "DevOps-Training".
+    - Sets the security group 'SSHAcess', which is created in the `provider.tf` file.
+    - Creates the user 'ansible', adds my public key, edits the sudoers file, and installs the Python `psutil` module.
+      - My public key is visible in the file, but since it's a public key, it's safe to share publicly.
+      - I configured it so that `apt` and `apt-get` commands can run passwordless with sudo so Ansible will work.
+      - Installs Python `psutil` so that the stats monitoring script will work.
 
 **3. [terraform/output.tf](terraform/output.tf)**
+    - Provides the instance IP as output after it successfully creates the instance. I do not plan to use a fixed IP to save costs, so this is necessary for other automation scripts.
+
+
 
 
 ### Remote Server Monitoring:
