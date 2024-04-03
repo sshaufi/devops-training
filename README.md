@@ -98,6 +98,7 @@ This script is currently incomplete and somewhat messy. In the future, I plan to
 However, if I end up adding too many features, it might be more efficient to use other specialized tools that can handle these tasks more effectively than a custom script. Nevertheless, this script serves as a valuable practice exercise for me to improve my skills and expanding my knowledge in the realm of DevOps.
 
 2. **[sys_reading_remote.py](sys_reading_remote.py)**
+
 The script [sys_reading.py](sys_reading.py) lacks the capability to SSH into servers and parse CSV files. I do not intend to add this functionality as it would complicate the script further as its already look messy. Additionally, this script is separated because it will execute sys_reading.py on the hosts themselves. In the future, I may consider combining both scripts.
 
 This script parses [ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.example) and SSHs into each host listed in it to execute the `sys_reading.py` script locally.
@@ -105,10 +106,56 @@ This script parses [ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.examp
 Initially, I intended to use the pandas library for parsing the CSV file. However, I discovered that Python's built-in csv module functions well for small datasets and offers cleaner code. As a result, I opted to switch to the csv library instead of pandas.
 
 ### Simple Execution:
-To simplify operations I connect all of the functinality above using a single shell script [run.sh/run.sh]
+### Simple Execution:
+
+To streamline operations, all the functionalities described above are connected using a single shell script [run.sh](run.sh).
+
+This shell script also utilizes a shebang to env, similar to all the Python scripts above:
+
+```
+#!/usr/bin/env sh
+```
+
+The script accepts four arguments and performs five actions: 'create', 'destroy', 'stats', 'update', and runs everything when no argument is given. When using the argument, it's possible to specify a character like 'c', 'd', 's', or 'u'.
+
+**create|c**
+- Executes `terraform apply` with the `-auto-approve` argument.
+- Adds instance IPs to [hosts.csv](ansible-playbook/hosts.csv.example).
+
+**destroy|d**
+- Executes `terraform destroy` with the `-auto-approve` argument.
+- Removes instance IPs from [hosts.csv](ansible-playbook/hosts.csv.example).
+
+**stats|s**
+- Executes `sys_reading_remote.py`, which runs `sys_reading.py` locally on the server.
+
+**update|u**
+- Runs `csv_to_ini.py` to convert [hosts.csv](ansible-playbook/hosts.csv.example) to [hosts](ansible-playbook/hosts.example).
+- Reads [hosts.csv](ansible-playbook/hosts.csv.example) and runs ansible-playbook on each host to update it.
+- Ansible-playbook commands will use the [hosts](ansible-playbook/hosts.example) file as inventory and run with the argument `ANSIBLE_HOST_KEY_CHECKING=False` to disable fingerprint checks on the first SSH connection.
+
+**No Arguments**
+When running [run.sh](run.sh) with no argument, it will execute the script in the following order:
+- create
+- update
+- stats
+- destroy
+
+Details on usage for each section are provided below.
 
 ## Usage
 ### Updates With Ansible
+
+
+
+
+```
+{
+  "firstName": "John",
+  "lastName": "Smith",
+  "age": 25
+}
+```
 
 > #### The quarterly results look great!
 >

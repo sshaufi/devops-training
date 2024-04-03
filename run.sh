@@ -58,6 +58,7 @@ ec2destroy(){
 case "$1" in
   'create'|'c')
         ec2create
+   exit 1
   ;;
   'destroy'|'d')
         ec2destroy
@@ -65,7 +66,7 @@ case "$1" in
   ;;
   'stats'|'s')
         sys_stats
-  ;;
+   exit 1
    'update'|'u')
         sys_update
   ;;
