@@ -24,9 +24,10 @@ Throughout this README, I will reference three servers. Please refer to the tabl
 | ss| ss.fish|OpenBSD|My personal OpenBSD server|
 | ec2| | Ubuntu|This server will be created on an AWS EC2 instance|
 
+&nbsp;
+&nbsp;
 
-
-### 1. Servers Updates
+### Servers Updates
 To update all servers, I'll employ both **Ansible** and **Python** scripts. The **Python** script is crucial for converting the CSV file into an INI format for the **Ansible** inventory. Since servers are listed in a CSV file for other automation purposes, it's necessary.
 
 **Ansible Playbooks:**
