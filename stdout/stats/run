@@ -1,0 +1,37 @@
+(myenv) [devops-training] % :./run.sh s
+-------------------------
+Status of all the servers
+-------------------------
+Running the sys_reading.py remotely...
+--------------------------------------------------
+System usage for  cloud :
+Hostname:  cloud.ss.fish
+Platform: Linux
+Uptime: 3days
+CPU (%): 0.0
+Mem Used (GB): 0.3 / 0.9
+Network Card IPs: 45.76.152.170
+Public IP: 45.76.152.170
+Disk Usage '/' (GB): 22.7 / 29.9
+
+--------------------------------------------------
+System usage for  ss :
+Hostname:  ss.fish
+Platform: OpenBSD
+Uptime: 122days
+CPU (%): 2.0
+Mem Used (GB): 0.2 / 1.0
+Network Card IPs: 8.9.6.20, 10.1.96.4
+Public IP: 8.9.6.20
+Disk Usage '/' (GB): 2.4 / 21.3
+
+--------------------------------------------------
+System usage for  ec2 :
+Hostname:  ip-172-31-1-232
+Platform: Linux
+Uptime: 7min
+CPU (%): 0.0
+Mem Used (GB): 0.2 / 0.9
+Network Card IPs:
+Public IP: 13.211.209.95
+Disk Usage '/' (GB): 1.8 / 7.6
