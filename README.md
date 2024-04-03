@@ -166,41 +166,48 @@ To execute updates on all servers easily, simply run `run.sh` with the argument 
 
 [**Command STDOUT**](stdout/ansible/run)
 
+
 ### Creating and Destroying EC2 Instance with Terraform
 
+The basic terraform arguments of plan, apply and destroy are working.
 
-
-```bash
-terraform apply
-```
-
-[**Command STDOUT**](stdout/terraform/tcreate)
-
+**Plan**
 ```bash
 terraform plan 
 ```
+[Command STDOUT](stdout/terraform/tplan)
 
-[**Command STDOUT**](stdout/terraform/tplan)
+
+**Apply**
+```bash
+terraform apply
+```
+[Command STDOUT](stdout/terraform/tcreate)
 
 
+**Destroy**
 ```bash
 terraform destroy 
 ```
+[Command STDOUT](stdout/terraform/tdestroy)
 
-[**Command STDOUT**](stdout/terraform/tdestroy)
 
 
+The creation and termination of EC2 instance can be simplify and automate with running the run script with the argument c and d.
+**Create**
 ```bash
 ./run.sh c
 ```
+[Command STDOUT](stdout/terraform/run_create)
 
-[**Command STDOUT**](stdout/terraform/run_create)
 
-
+**Destroy**
 ```bash
 ./run.sh d
 ```
-[**Command STDOUT**](stdout/terraform/run_destroy)
+[Command STDOUT](stdout/terraform/run_destroy)
+
+
 
 
 

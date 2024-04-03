@@ -1,0 +1,202 @@
+(myenv) [devops-training] % :./run.sh d
+------------------------
+Destroy the EC2 instance
+------------------------
+Destroy EC2 instance...
+aws_route_table.terraform: Refreshing state... [id=rtb-012085708ee0ff001]
+aws_security_group.terraform: Refreshing state... [id=sg-0d633d812814fd566]
+aws_instance.DevOps-Training: Refreshing state... [id=i-0074243c0d7b8b9e2]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated
+with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # aws_instance.DevOps-Training will be destroyed
+  - resource "aws_instance" "DevOps-Training" {
+      - ami                                  = "ami-09c8d5d747253fb7a" -> null
+      - arn                                  = "arn:aws:ec2:ap-southeast-2:763760446291:instance/i-0074243c0d7b8b9e2" -> null
+      - associate_public_ip_address          = true -> null
+      - availability_zone                    = "ap-southeast-2a" -> null
+      - cpu_core_count                       = 1 -> null
+      - cpu_threads_per_core                 = 1 -> null
+      - disable_api_stop                     = false -> null
+      - disable_api_termination              = false -> null
+      - ebs_optimized                        = false -> null
+      - get_password_data                    = false -> null
+      - hibernation                          = false -> null
+      - id                                   = "i-0074243c0d7b8b9e2" -> null
+      - instance_initiated_shutdown_behavior = "stop" -> null
+      - instance_state                       = "running" -> null
+      - instance_type                        = "t2.micro" -> null
+      - ipv6_address_count                   = 0 -> null
+      - ipv6_addresses                       = [] -> null
+      - key_name                             = "m3air" -> null
+      - monitoring                           = false -> null
+      - placement_partition_number           = 0 -> null
+      - primary_network_interface_id         = "eni-00c1f8a17a2b17546" -> null
+      - private_dns                          = "ip-172-31-1-232.ap-southeast-2.compute.internal" -> null
+      - private_ip                           = "172.31.1.232" -> null
+      - public_dns                           = "ec2-13-211-209-95.ap-southeast-2.compute.amazonaws.com" -> null
+      - public_ip                            = "13.211.209.95" -> null
+      - secondary_private_ips                = [] -> null
+      - security_groups                      = [
+          - "SSHAccess",
+        ] -> null
+      - source_dest_check                    = true -> null
+      - subnet_id                            = "subnet-0d2273dfa5ec5c5a8" -> null
+      - tags                                 = {
+          - "Name" = "DevOps-Training"
+        } -> null
+      - tags_all                             = {
+          - "Name" = "DevOps-Training"
+        } -> null
+      - tenancy                              = "default" -> null
+      - user_data                            = "93f55b060f203b20dd188cc0805534bf4b5e7ec1" -> null
+      - user_data_replace_on_change          = false -> null
+      - vpc_security_group_ids               = [
+          - "sg-0d633d812814fd566",
+        ] -> null
+
+      - capacity_reservation_specification {
+          - capacity_reservation_preference = "open" -> null
+        }
+
+      - cpu_options {
+          - core_count       = 1 -> null
+          - threads_per_core = 1 -> null
+        }
+
+      - credit_specification {
+          - cpu_credits = "standard" -> null
+        }
+
+      - enclave_options {
+          - enabled = false -> null
+        }
+
+      - maintenance_options {
+          - auto_recovery = "default" -> null
+        }
+
+      - metadata_options {
+          - http_endpoint               = "enabled" -> null
+          - http_protocol_ipv6          = "disabled" -> null
+          - http_put_response_hop_limit = 1 -> null
+          - http_tokens                 = "optional" -> null
+          - instance_metadata_tags      = "disabled" -> null
+        }
+
+      - private_dns_name_options {
+          - enable_resource_name_dns_a_record    = false -> null
+          - enable_resource_name_dns_aaaa_record = false -> null
+          - hostname_type                        = "ip-name" -> null
+        }
+
+      - root_block_device {
+          - delete_on_termination = true -> null
+          - device_name           = "/dev/sda1" -> null
+          - encrypted             = false -> null
+          - iops                  = 100 -> null
+          - tags                  = {} -> null
+          - tags_all              = {} -> null
+          - throughput            = 0 -> null
+          - volume_id             = "vol-0fc907ce450529b1d" -> null
+          - volume_size           = 8 -> null
+          - volume_type           = "gp2" -> null
+        }
+    }
+
+  # aws_route_table.terraform will be destroyed
+  - resource "aws_route_table" "terraform" {
+      - arn              = "arn:aws:ec2:ap-southeast-2:763760446291:route-table/rtb-012085708ee0ff001" -> null
+      - id               = "rtb-012085708ee0ff001" -> null
+      - owner_id         = "763760446291" -> null
+      - propagating_vgws = [] -> null
+      - route            = [
+          - {
+              - carrier_gateway_id         = ""
+              - cidr_block                 = "0.0.0.0/0"
+              - core_network_arn           = ""
+              - destination_prefix_list_id = ""
+              - egress_only_gateway_id     = ""
+              - gateway_id                 = "igw-053b79f1e698caf46"
+              - ipv6_cidr_block            = ""
+              - local_gateway_id           = ""
+              - nat_gateway_id             = ""
+              - network_interface_id       = ""
+              - transit_gateway_id         = ""
+              - vpc_endpoint_id            = ""
+              - vpc_peering_connection_id  = ""
+            },
+        ] -> null
+      - tags             = {} -> null
+      - tags_all         = {} -> null
+      - vpc_id           = "vpc-025e30832fbec6fea" -> null
+    }
+
+  # aws_security_group.terraform will be destroyed
+  - resource "aws_security_group" "terraform" {
+      - arn                    = "arn:aws:ec2:ap-southeast-2:763760446291:security-group/sg-0d633d812814fd566" -> null
+      - description            = "Allow SSH access" -> null
+      - egress                 = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 0
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "-1"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 0
+            },
+        ] -> null
+      - id                     = "sg-0d633d812814fd566" -> null
+      - ingress                = [
+          - {
+              - cidr_blocks      = [
+                  - "0.0.0.0/0",
+                ]
+              - description      = ""
+              - from_port        = 22
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 22
+            },
+        ] -> null
+      - name                   = "SSHAccess" -> null
+      - owner_id               = "763760446291" -> null
+      - revoke_rules_on_delete = false -> null
+      - tags                   = {} -> null
+      - tags_all               = {} -> null
+      - vpc_id                 = "vpc-025e30832fbec6fea" -> null
+    }
+
+Plan: 0 to add, 0 to change, 3 to destroy.
+
+Changes to Outputs:
+  - instance_ips = "13.211.209.95" -> null
+aws_route_table.terraform: Destroying... [id=rtb-012085708ee0ff001]
+aws_security_group.terraform: Destroying... [id=sg-0d633d812814fd566]
+aws_instance.DevOps-Training: Destroying... [id=i-0074243c0d7b8b9e2]
+aws_route_table.terraform: Destruction complete after 1s
+aws_security_group.terraform: Still destroying... [id=sg-0d633d812814fd566, 10s elapsed]
+aws_instance.DevOps-Training: Still destroying... [id=i-0074243c0d7b8b9e2, 10s elapsed]
+aws_instance.DevOps-Training: Still destroying... [id=i-0074243c0d7b8b9e2, 20s elapsed]
+aws_security_group.terraform: Still destroying... [id=sg-0d633d812814fd566, 20s elapsed]
+aws_security_group.terraform: Still destroying... [id=sg-0d633d812814fd566, 30s elapsed]
+aws_instance.DevOps-Training: Still destroying... [id=i-0074243c0d7b8b9e2, 30s elapsed]
+aws_security_group.terraform: Destruction complete after 38s
+aws_instance.DevOps-Training: Still destroying... [id=i-0074243c0d7b8b9e2, 40s elapsed]
+aws_instance.DevOps-Training: Destruction complete after 41s
+
+Destroy complete! Resources: 3 destroyed.
+Remove EC2 from hosts.csv...
+(myenv) [devops-training] % :
