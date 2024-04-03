@@ -26,7 +26,7 @@ Throughout this README, I will reference three servers. Please refer to the tabl
 
 
 
-## Servers Updates
+### 1. Servers Updates
 To update all servers, I'll employ both **Ansible** and **Python** scripts. The **Python** script is crucial for converting the CSV file into an INI format for the **Ansible** inventory. Since servers are listed in a CSV file for other automation purposes, it's necessary.
 
 **Ansible Playbooks:**
