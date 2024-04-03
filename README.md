@@ -59,10 +59,10 @@ To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. 
 2. **[terraform/main.tf](terraform/main.tf)**
     - Sets the EC2 AMI to `ami-09c8d5d747253fb7a` (Ubuntu 22.04 LTS, x86), sets the instance type to `t2.micro`, and names it "DevOps-Training".
     - Sets the security group 'SSHAcess', which is created in the `provider.tf` file.
-    - Creates the user 'ansible', adds my public key, edits the sudoers file, and installs the **Python** psutil module.
+    - Creates the user 'ansible', adds my public key, edits the sudoers file, and installs the **Python** psutil library.
       - My public key is visible in the file, but since it's a public key, it's safe to share publicly.
       - I configured it so that `apt` and `apt-get` commands can run passwordless with sudo so **Ansible** will work.
-      - Installs **Python** psutil so that the stats monitoring script will work.
+      - Installs **Python** psutil library so that the stats monitoring script will work.
 
 3. **[terraform/output.tf](terraform/output.tf)**
     - Provides the instance IP as output after it successfully creates the instance. I do not plan to use a fixed IP to save costs, so this is necessary for other automation scripts.
@@ -71,17 +71,17 @@ To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. 
 &nbsp;
 &nbsp;
 ### Remote Server Monitoring:
-To remotely monitor system statistics on all servers, I'll utilize the psutil **Python** library for reading system statistics and paramiko for establishing SSH connections remotely.
+To remotely monitor system statistics on all servers, I'll utilize the psutil **Python** library for reading system statistics and **Python** paramiko library for establishing SSH connections remotely.
 
-Originally, I planned to create the system reader from scratch using available Unix tools and parsing, but this approach would complicate things, especially since I intend to use this script on three different platforms (Linux, OpenBSD, and Darwin [MacOS]). Instead, it's simpler to use the psutil module since it already works across all these platforms.
+Originally, I planned to create the system reader from scratch using available Unix tools and parsing, but this approach would complicate things, especially since I intend to use this script on three different platforms (Linux, OpenBSD, and Darwin [MacOS]). Instead, it's simpler to use the psutil library since it already works across all these platforms.
 
-I prefer to start most of my scripts with a shebang to env, like below:
+I prefer to start most of my scripts with a shebang to `env`, like below:
 ```
 #!/usr/bin/env python3
 ```
-This way, I can run the script without specifying `python3` or `python` in front of it. Using env also ensures that the OS will pick the correct **Python** version/program, and since **Python** isn't always located in the same path on every platform, this approach is more robust.
+This way, I can run the script without specifying `python3` or `python` in front of it. Using `env` also ensures that the OS will pick the correct **Python** version/program, and since **Python** isn't always located in the same path on every platform, this approach is more robust.
 
-1. **[sys_reading.py](sys_reading.py)**
+**[sys_reading.py](sys_reading.py)**
 
 This script was created with the assistance of the [psutil documentation](https://psutil.readthedocs.io/en/latest/).  It displays various system metrics, including Hostname, Platform, Uptime, CPU usage, Memory usage, Network Card IPs, Public IP, and Root disk usage.
 
@@ -122,7 +122,7 @@ Initially, I intended to use the pandas library for parsing the CSV file. Howeve
 
 To streamline operations, all the functionalities described above are connected using a single shell script [run.sh](run.sh).
 
-This shell script also utilizes a shebang to env, similar to all the **Python** scripts above:
+This shell script also utilizes a shebang to `env`, similar to all the **Python** scripts above:
 
 ```
 #!/usr/bin/env sh
@@ -251,6 +251,8 @@ sys_reading_remote.py can run with the script csv_to_ini.py, this can be automat
 [stdout](stdout/stats/run)
 
 
+&nbsp;
+&nbsp;
 ### Connect it all together
 
 I have demonstrated in each section above how to utilize run.sh with arguments. To execute all tasks in the sequence of creation, update, system statistics check, and destruction, simply run the following command without any argument:
