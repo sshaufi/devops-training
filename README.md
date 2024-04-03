@@ -266,4 +266,6 @@ Watch the video below to observe how this command operates:
 
 ![Commands Running](stdout/run/simple.mp4)
 
+[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
+
 [stdout](stdout/run/run)
