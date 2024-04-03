@@ -240,14 +240,7 @@ sys_reading_remote.py can run with the script csv_to_ini.py, this can be automat
 ```bash
 ./run.sh 
 ```
+[stdout](stdout/run/run)
 
-[**Command STDOUT**](stdout/stats/run)
-
-![Commands Running](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
-
-
-
-
-![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
-
+![Commands Running](https://cloud.ss.fish/s/55PRtARaoJyQnX3/download/output.mp4)
 
