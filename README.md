@@ -7,8 +7,8 @@ This repository serves as a platform for my personal DevOps training, showcasing
 3. **Personal Future Reference:** This repository will be used by me for future reference and for future projects.
 
 ## Issue Description
-1. **Servers Updates:** Simplify the update process for two of my personal servers and AWS EC2 server.
-2. **Automated AWS EC2 Setup:** Implement automated setup, and destruction of Ubuntu servers on AWS EC2.
+1. **Servers Updates:** Simplify the update process for two of my personal servers and **AWS** EC2 server.
+2. **Automated AWS EC2 Setup:** Implement automated setup, and destruction of Ubuntu servers on **AWS**EC2.
 3. **Remote Server Monitoring:** Monitor system status from all servers remotely, no direct access needed.
 4. **Simple Execution:** Execute all tasks with a simple command-line interface.
 5. **Keep it Simple:** I am aiming to make the scripts and codes as simple and readable as possible.
@@ -32,7 +32,7 @@ To update all servers, I'll employ both **Ansible** and **Python** scripts. The 
 2. Update all the package on ss server: [ansible-playbook/update_upgrade_ss.yml](ansible-playbook/update_upgrade_ss.yml)
 3. Update and check if reboot is needed on ec2 server: [ansible-playbook/update_upgrade_ec2.yml](ansible-playbook/update_upgrade_ec2.yml)
 
-On all three servers, the playbook will run as the user named 'ansible', which I created for security purposes. This user can execute specific commands without a password when using sudo and doas, as I have manually configured.
+On all three servers, the playbook will run as the user named `ansible`, which I created for security purposes. This user can execute specific commands without a password when using sudo and doas, as I have manually configured.
 
 Please note that on both the cloud and ec2 server playbooks, I do not use the apt module. Instead, I manually run the command in the **Ansible** playbook due to [this GitHub issue #51663](https://github.com/ansible/ansible/issues/51663). Additionally, in both server playbooks, it will check if a reboot is needed after every update.
 
@@ -43,7 +43,7 @@ The inventory is located here: [ansible-playbook/hosts.csv](ansible-playbook/hos
 To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. **aws-cli** is only needed for authentication and connection to my **AWS** account. To make this work, I created three files: `provider.tf`, `main.tf`, and `output.tf`. Let me explain what each of these files does:
 
 1. **[terraform/provider.tf](terraform/provider.tf)**
-    - Specifies `hashicorp/aws` as the provider so **Terraform** will work with AWS.
+    - Specifies `hashicorp/aws` as the provider so **Terraform** will work with **AWS**.
     - Sets the region to Sydney (`ap-southeast-2`).
     - Sets up the VPC, Internet Gateway, and creates the Security Group to allow SSH connection.
       - All of this is needed for it to connect to the internet and for SSH to work.
