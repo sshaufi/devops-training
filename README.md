@@ -6,14 +6,14 @@ This repository serves as a platform for my personal DevOps training, showcasing
 2. **Skill Demonstration:** To demonstrate my capabilities in DevOps tools and scripting to potential employers and collaborators.
 3. **Personal Future Reference:** This repository will be used by me for future reference and for future projects.
 
-## Issue Description
+# Issue Description
 1. **Servers Updates:** Simplify the update process for two of my personal servers and **AWS** EC2 server.
 2. **Automated AWS EC2 Setup:** Implement automated setup, and destruction of Ubuntu servers on **AWS**EC2.
 3. **Remote Server Monitoring:** Monitor system status from all servers remotely, no direct access needed.
 4. **Simple Execution:** Execute all tasks with a simple command-line interface.
 5. **Keep it Simple:** I am aiming to make the scripts and codes as simple and readable as possible.
 
-## Solution
+# Solution
 Since I try to keep it simple, I aim to maintain the scripts and code with minimal dependencies possible. Additionally, it's important that they remain readable without excessive commenting. I will thoroughly explain the solution on each section.
 
 Throughout this README, I will reference three servers. Please refer to the table below. I will refer to the servers by their names.
@@ -26,9 +26,7 @@ Throughout this README, I will reference three servers. Please refer to the tabl
 
 
 
-
-
-### Servers Updates
+## Servers Updates
 To update all servers, I'll employ both **Ansible** and **Python** scripts. The **Python** script is crucial for converting the CSV file into an INI format for the **Ansible** inventory. Since servers are listed in a CSV file for other automation purposes, it's necessary.
 
 **Ansible Playbooks:**
