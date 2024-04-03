@@ -176,26 +176,77 @@ To execute updates on all servers easily, simply run `run.sh` with the argument 
 
 
 
+```bash
+terraform apply
+```
+
+[**Command STDOUT**](stdout/terraform/tcreate)
+
+```bash
+terraform plan 
+```
+
+[**Command STDOUT**](stdout/terraform/tplan)
+
+
+```bash
+terraform destroy 
+```
+
+[**Command STDOUT**](stdout/terraform/tdestroy)
+
+
+```bash
+./run.sh c
+```
+
 [**Command STDOUT**](stdout/terraform/run_create)
+
+
+```bash
+./run.sh d
+```
+[**Command STDOUT**](stdout/terraform/run_destroy)
+
 
 
 ### Running sys_reading.py remotely with sys_reading_remote.py
 
+The sys_reading.py can run on any Unix system, to run this script just run it without any argument:
 
-[**Command STDOUT**](stdout/ansible/run)
+```bash
+./sys_reading.py
+```
+[**Command STDOUT**](stdout/stats/sys_reading)
+
+To run this script remotely, just run sys_reading_remote.py without argument.
+```bash
+./sys_reading_remote.py
+```
+[**Command STDOUT**](stdout/stats/sys_reading_remote)
+
+
+sys_reading_remote.py can run with the script csv_to_ini.py, this can be automate by running run.sh with the argument u
+```bash
+./run.sh u
+```
+[**Command STDOUT**](stdout/stats/run)
+
 
 ### Connect it all together
 
 
+```bash
+./run.sh 
+```
+
+[**Command STDOUT**](stdout/stats/run)
+
+![Commands Running](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
 
 
-The background color is `#ffffff` for light mode and `#000000` for dark mode.
-
-
-[Contribution guidelines for this project](ansible-playbook/update_upgrade_cloud.yml)
 
 
 ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
 
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
