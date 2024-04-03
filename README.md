@@ -81,7 +81,7 @@ I prefer to start most of my scripts with a shebang to `env`, like below:
 ```
 This way, I can run the script without specifying `python3` or `python` in front of it. Using `env` also ensures that the OS will pick the correct **Python** version/program, and since **Python** isn't always located in the same path on every platform, this approach is more robust.
 
-**sys_reading.py** [code](sys_reading.py)
+#### sys_reading.py [code](sys_reading.py)
 
 This script was created with the assistance of the [psutil documentation](https://psutil.readthedocs.io/en/latest/).  It displays various system metrics, including Hostname, Platform, Uptime, CPU usage, Memory usage, Network Card IPs, Public IP, and Root disk usage.
 
@@ -108,7 +108,7 @@ This script is currently incomplete and somewhat messy. In the future, I plan to
 
 However, if I end up adding too many features, it might be more efficient to use other specialized tools that can handle these tasks more effectively than a custom script. Nevertheless, this script serves as a valuable practice exercise for me to improve my skills and expanding my knowledge in the realm of DevOps.
 
-sys_reading_remote.py [code](sys_reading_remote.py)
+#### sys_reading_remote.py [code](sys_reading_remote.py)
 
 The script [sys_reading.py](sys_reading.py) lacks the capability to SSH into servers and parse CSV files. I do not intend to add this functionality as it would complicate the script further as its already look messy. Additionally, this script is separated because it will execute sys_reading.py on the hosts themselves. In the future, I may consider combining both scripts.
 
