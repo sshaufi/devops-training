@@ -81,7 +81,7 @@ I prefer to start most of my scripts with a shebang to `env`, like below:
 ```
 This way, I can run the script without specifying `python3` or `python` in front of it. Using `env` also ensures that the OS will pick the correct **Python** version/program, and since **Python** isn't always located in the same path on every platform, this approach is more robust.
 
-**[sys_reading.py](sys_reading.py)**
+**sys_reading.py** [Link](sys_reading.py)
 
 This script was created with the assistance of the [psutil documentation](https://psutil.readthedocs.io/en/latest/).  It displays various system metrics, including Hostname, Platform, Uptime, CPU usage, Memory usage, Network Card IPs, Public IP, and Root disk usage.
 
