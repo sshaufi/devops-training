@@ -159,6 +159,7 @@ To upgrade cloud I will just run the following command on the [ansible-playbook]
 PLAY [Update and upgrade cloud server] **************************************************************************
 
 ...
+```
 
 <details>
   <summary>Click me</summary>
