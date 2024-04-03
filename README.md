@@ -192,14 +192,14 @@ The basic `terraform` arguments of `plan`, `apply` and `destroy` are working.
 ```bash
 terraform plan 
 ```
-[Command STDOUT](stdout/terraform/tplan)
+[stdout](stdout/terraform/tplan)
 
 
 **Apply**
 ```bash
 terraform apply
 ```
-[Command STDOUT](stdout/terraform/tcreate)
+[stdout](stdout/terraform/tcreate)
 
 
 **Destroy**
