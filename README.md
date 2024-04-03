@@ -142,12 +142,6 @@ When running [run.sh](run.sh) with no argument, it will execute the script in th
 
 Details on usage for each section are provided below.
 
-## Usage
-In this section I will show how I use this this repository, and the command [run.sh](run.sh) to automate and simplify this tasks.
-
-I will also share the stdout of each of the commands to show that the script actually works.
-
-### Updates With Ansible
 
 ## Usage
 This section demonstrates how to utilize this repository and the `run.sh` command for automating and simplifying various tasks. 

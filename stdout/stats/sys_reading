@@ -1,0 +1,10 @@
+(myenv) [devops-training] % :./sys_reading.py
+Hostname:  m3air.local
+Platform: Darwin
+Uptime: 1day
+CPU (%): 2.0
+Mem Used (GB): 7.1 / 16.0
+Network Card IPs: 192.168.0.202
+Public IP: 2a09:bac2:316:355::55:38
+Disk Usage '/' (GB): 9.5 / 460.4
+(myenv) [devops-training] % :
