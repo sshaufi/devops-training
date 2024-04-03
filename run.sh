@@ -67,6 +67,7 @@ case "$1" in
   'stats'|'s')
         sys_stats
    exit 1
+  ;;
    'update'|'u')
         sys_update
   ;;
