@@ -1,5 +1,5 @@
 # DevOps Training
-This repository serves as a platform for my personal DevOps training, showcasing my skills in scripting with `Python` and *bash*, as well as utilizing DevOps tools such as **ansible** and `terraform`. Its primary objectives are:
+This repository serves as a platform for my personal DevOps training, showcasing my skills in scripting with **Python** and **Shell Scripting**, as well as utilizing DevOps tools such as **Ansible** and **Terraform**. Its primary objectives are:
 
 
 1. **Self-Training:** To train myself in DevOps tasks.
@@ -32,9 +32,9 @@ To update all servers, I'll employ both **Ansible** and **Python** scripts. The 
 2. Update all the package on ss server: [ansible-playbook/update_upgrade_ss.yml](ansible-playbook/update_upgrade_ss.yml)
 3. Update and check if reboot is needed on ec2 server: [ansible-playbook/update_upgrade_ec2.yml](ansible-playbook/update_upgrade_ec2.yml)
 
-On all three servers, the playbook will run as the user named 'ansible,' which I created for security purposes. This user can execute specific commands without a password when using sudo and doas, as I have manually configured.
+On all three servers, the playbook will run as the user named 'ansible', which I created for security purposes. This user can execute specific commands without a password when using sudo and doas, as I have manually configured.
 
-Please note that on both the cloud and ec2 server playbooks, I do not use the apt module. Instead, I manually run the command in the Ansible playbook due to [this GitHub issue #51663](https://github.com/ansible/ansible/issues/51663). Additionally, in both server playbooks, it will check if a reboot is needed after every update.
+Please note that on both the cloud and ec2 server playbooks, I do not use the apt module. Instead, I manually run the command in the **Ansible** playbook due to [this GitHub issue #51663](https://github.com/ansible/ansible/issues/51663). Additionally, in both server playbooks, it will check if a reboot is needed after every update.
 
 The inventory is located here: [ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.example) and will be converted by the script [csv_to_ini.py](csv_to_ini.py) to [ansible-playbook/hosts](ansible-playbook/hosts). This script will run automatically when using the `run.sh` command and can also be executed manually. Further details on the `run.sh` command will be explained on further section.
 
@@ -43,7 +43,7 @@ The inventory is located here: [ansible-playbook/hosts.csv](ansible-playbook/hos
 To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. **aws-cli** is only needed for authentication and connection to my **AWS** account. To make this work, I created three files: `provider.tf`, `main.tf`, and `output.tf`. Let me explain what each of these files does:
 
 1. **[terraform/provider.tf](terraform/provider.tf)**
-    - Specifies `hashicorp/aws` as the provider so Terraform will work with AWS.
+    - Specifies `hashicorp/aws` as the provider so **Terraform** will work with AWS.
     - Sets the region to Sydney (`ap-southeast-2`).
     - Sets up the VPC, Internet Gateway, and creates the Security Group to allow SSH connection.
       - All of this is needed for it to connect to the internet and for SSH to work.
@@ -51,10 +51,10 @@ To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. 
 2. **[terraform/main.tf](terraform/main.tf)**
     - Sets the EC2 AMI to `ami-09c8d5d747253fb7a` (Ubuntu 22.04 LTS, x86), sets the instance type to `t2.micro`, and names it "DevOps-Training".
     - Sets the security group 'SSHAcess', which is created in the `provider.tf` file.
-    - Creates the user 'ansible', adds my public key, edits the sudoers file, and installs the Python `psutil` module.
+    - Creates the user 'ansible', adds my public key, edits the sudoers file, and installs the **Python** psutil module.
       - My public key is visible in the file, but since it's a public key, it's safe to share publicly.
-      - I configured it so that `apt` and `apt-get` commands can run passwordless with sudo so Ansible will work.
-      - Installs Python `psutil` so that the stats monitoring script will work.
+      - I configured it so that `apt` and `apt-get` commands can run passwordless with sudo so **Ansible** will work.
+      - Installs **Python** psutil so that the stats monitoring script will work.
 
 3. **[terraform/output.tf](terraform/output.tf)**
     - Provides the instance IP as output after it successfully creates the instance. I do not plan to use a fixed IP to save costs, so this is necessary for other automation scripts.
@@ -69,7 +69,7 @@ I prefer to start most of my scripts with a shebang to env, like below:
 ```
 #!/usr/bin/env python3
 ```
-This way, I can run the script without specifying python3 or python in front of it. Using env also ensures that the OS will pick the correct Python version/program, and since Python isn't always located in the same path on every platform, this approach is more robust.
+This way, I can run the script without specifying `python3` or `python` in front of it. Using env also ensures that the OS will pick the correct **Python** version/program, and since **Python** isn't always located in the same path on every platform, this approach is more robust.
 
 1. **[sys_reading.py](sys_reading.py)**
 
@@ -87,7 +87,7 @@ This script was created with the assistance of the [psutil documentation](https:
 - **Hostname:** just to keep this consistant I'll be using the standard Unix `hostname` command.
 
 **Using Platform Library**
-- **Platform:** Utilizes the standard Python platform library to obtain platform information. This could prove essential for future updates to the script, especially if different commands are required for specific platforms.
+- **Platform:** Utilizes the standard **Python** platform library to obtain platform information. This could prove essential for future updates to the script, especially if different commands are required for specific platforms.
 
 This script is currently incomplete and somewhat messy. In the future, I plan to improve it by adding the following readings and features:
 
@@ -110,7 +110,7 @@ Initially, I intended to use the pandas library for parsing the CSV file. Howeve
 
 To streamline operations, all the functionalities described above are connected using a single shell script [run.sh](run.sh).
 
-This shell script also utilizes a shebang to env, similar to all the Python scripts above:
+This shell script also utilizes a shebang to env, similar to all the **Python** scripts above:
 
 ```
 #!/usr/bin/env sh
@@ -132,7 +132,7 @@ The script accepts four arguments and performs five actions: 'create', 'destroy'
 **update|u**
 - Runs `csv_to_ini.py` to convert [hosts.csv](ansible-playbook/hosts.csv.example) to [hosts](ansible-playbook/hosts.example).
 - Reads [hosts.csv](ansible-playbook/hosts.csv.example) and runs ansible-playbook on each host to update it.
-- Ansible-playbook commands will use the [hosts](ansible-playbook/hosts.example) file as inventory and run with the argument `ANSIBLE_HOST_KEY_CHECKING=False` to disable fingerprint checks on the first SSH connection.
+- `ansible-playbook` commands will use the [hosts](ansible-playbook/hosts.example) file as inventory and run with the argument `ANSIBLE_HOST_KEY_CHECKING=False` to disable fingerprint checks on the first SSH connection.
 
 **No Arguments**
 When running [run.sh](run.sh) with no argument, it will execute the script in the following order:
@@ -170,7 +170,7 @@ To execute updates on all servers easily, simply run `run.sh` with the argument 
 
 ### Creating and Destroying EC2 Instance with Terraform
 
-The basic terraform arguments of plan, apply and destroy are working.
+The basic `terraform` arguments of `plan`, `apply` and `destroy` are working.
 
 **Plan**
 ```bash
