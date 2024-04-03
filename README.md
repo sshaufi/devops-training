@@ -260,10 +260,8 @@ I have demonstrated in each section above how to utilize run.sh with arguments. 
 ```bash
 ./run.sh 
 ```
-
-
 Watch the video below to observe how this command operates:
+https://github.com/sshaufi/devops-training/assets/165138351/02abd79e-116c-4561-b471-60db1cd01a07
 
-![Commands Running](stdout/run/simple.mp4)
 
 [stdout](stdout/run/run)
