@@ -1,5 +1,6 @@
 # DevOps Training
-This repository serves as a platform for my personal DevOps training, showcasing my skills in scripting and DevOps tools. Its primary objectives are:
+This repository serves as a platform for my personal DevOps training, showcasing my skills in scripting with `Python` and `bash`, as well as utilizing DevOps tools such as `ansible` and `terraform`. Its primary objectives are:
+
 
 1. **Self-Training:** To train myself in DevOps tasks.
 2. **Skill Demonstration:** To demonstrate my capabilities in DevOps tools and scripting to potential employers and collaborators.
