@@ -13,6 +13,9 @@ This repository serves as a platform for my personal DevOps training, showcasing
 4. **Simple Execution:** Execute all tasks with a simple command-line interface.
 5. **Keep it Simple:** I am aiming to make the scripts and codes as simple and readable as possible.
 
+&nbsp;
+&nbsp;
+
 ## Solution
 Since I try to keep it simple, I aim to maintain the scripts and code with minimal dependencies possible. Additionally, it's important that they remain readable without excessive commenting. I will thoroughly explain the solution on each section.
 
@@ -41,6 +44,8 @@ Please note that on both the cloud and ec2 server playbooks, I do not use the ap
 
 The inventory is located here: [ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.example) and will be converted by the script [csv_to_ini.py](csv_to_ini.py) to [ansible-playbook/hosts](ansible-playbook/hosts). This script will run automatically when using the `run.sh` command and can also be executed manually. Further details on the `run.sh` command will be explained on further section.
 
+&nbsp;
+&nbsp;
 
 ### Automated AWS EC2 Setup:
 To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. **aws-cli** is only needed for authentication and connection to my **AWS** account. To make this work, I created three files: `provider.tf`, `main.tf`, and `output.tf`. Let me explain what each of these files does:
@@ -63,6 +68,8 @@ To create an EC2 instance in **AWS**, I utilized **Terraform** and **aws-cli**. 
     - Provides the instance IP as output after it successfully creates the instance. I do not plan to use a fixed IP to save costs, so this is necessary for other automation scripts.
 
 
+&nbsp;
+&nbsp;
 ### Remote Server Monitoring:
 To remotely monitor system statistics on all servers, I'll utilize the psutil **Python** library for reading system statistics and paramiko for establishing SSH connections remotely.
 
@@ -109,6 +116,8 @@ This script parses [ansible-playbook/hosts.csv](ansible-playbook/hosts.csv.examp
 
 Initially, I intended to use the pandas library for parsing the CSV file. However, I discovered that Python's built-in csv module functions well for small datasets and offers cleaner code. As a result, I opted to switch to the csv library instead of pandas.
 
+&nbsp;
+&nbsp;
 ### Simple Execution:
 
 To streamline operations, all the functionalities described above are connected using a single shell script [run.sh](run.sh).
@@ -146,6 +155,8 @@ When running [run.sh](run.sh) with no argument, it will execute the script in th
 
 Details on usage for each section are provided below.
 
+&nbsp;
+&nbsp;
 
 ## Usage
 This section demonstrates how to utilize this repository and the `run.sh` command for automating and simplifying various tasks. 
@@ -171,6 +182,8 @@ To execute updates on all servers easily, simply run `run.sh` with the argument 
 [stdout](stdout/ansible/run)
 
 
+&nbsp;
+&nbsp;
 ### Creating and Destroying EC2 Instance with Terraform
 
 The basic `terraform` arguments of `plan`, `apply` and `destroy` are working.
@@ -212,6 +225,8 @@ The creation and termination of EC2 instance can be simplify and automate with r
 [stdout](stdout/terraform/run_destroy)
 
 
+&nbsp;
+&nbsp;
 
 ### Running sys_reading.py remotely with sys_reading_remote.py
 
