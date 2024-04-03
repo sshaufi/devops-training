@@ -156,7 +156,7 @@ To upgrade the cloud server, run the following command in the [ansible-playbook]
 ansible-playbook -i hosts update_upgrade_cloud.yml
 ```
 
-[**Command STDOUT**](stdout/ansible/ansible)
+[stdout](stdout/ansible/ansible)
 
 To execute updates on all servers easily, simply run `run.sh` with the argument `u` as shown below:
 
@@ -164,7 +164,7 @@ To execute updates on all servers easily, simply run `run.sh` with the argument 
 ./run.sh u
 ```
 
-[**Command STDOUT**](stdout/ansible/run)
+[stdout](stdout/ansible/run)
 
 
 ### Creating and Destroying EC2 Instance with Terraform
@@ -189,7 +189,7 @@ terraform apply
 ```bash
 terraform destroy 
 ```
-[Command STDOUT](stdout/terraform/tdestroy)
+[stdout](stdout/terraform/tdestroy)
 
 
 
@@ -198,16 +198,14 @@ The creation and termination of EC2 instance can be simplify and automate with r
 ```bash
 ./run.sh c
 ```
-[Command STDOUT](stdout/terraform/run_create)
+[stdout](stdout/terraform/run_create)
 
 
 **Destroy**
 ```bash
 ./run.sh d
 ```
-[Command STDOUT](stdout/terraform/run_destroy)
-
-
+[stdout](stdout/terraform/run_destroy)
 
 
 
@@ -218,29 +216,32 @@ The sys_reading.py can run on any Unix system, to run this script just run it wi
 ```bash
 ./sys_reading.py
 ```
-[**Command STDOUT**](stdout/stats/sys_reading)
+[stdout](stdout/stats/sys_reading)
 
 To run this script remotely, just run sys_reading_remote.py without argument.
 ```bash
 ./sys_reading_remote.py
 ```
-[**Command STDOUT**](stdout/stats/sys_reading_remote)
+[stdout](stdout/stats/sys_reading_remote)
 
 
 sys_reading_remote.py can run with the script csv_to_ini.py, this can be automate by running run.sh with the argument u
 ```bash
 ./run.sh u
 ```
-[**Command STDOUT**](stdout/stats/run)
+[stdout](stdout/stats/run)
 
 
 ### Connect it all together
 
+I have demonstrated in each section above how to utilize run.sh with arguments. To execute all tasks in the sequence of creation, update, system statistics check, and destruction, simply run the following command without any argument:
 
 ```bash
 ./run.sh 
 ```
-[stdout](stdout/run/run)
+
+Watch the video below to observe how this command operates:
 
 ![Commands Running](https://cloud.ss.fish/s/55PRtARaoJyQnX3/download/output.mp4)
 
+[stdout](stdout/run/run)
