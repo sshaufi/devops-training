@@ -150,63 +150,18 @@ In this section I will show how I use this this repository, and the command [run
 
 On the directory [ansible-playbook](ansible-playbook), it has all three of the servers playbook and the inventory file [hosts](hosts).
 
+
+
 To upgrade cloud I will just run the following command on the [ansible-playbook](ansible-playbook)
 ```
 (myenv) [ansible-playbook] % :ansible-playbook -i hosts update_upgrade_cloud.yml
 
 PLAY [Update and upgrade cloud server] **************************************************************************
 
-TASK [Gathering Facts] ******************************************************************************************
-ok: [cloud.ss.fish]
+...
 
-TASK [Update all package] ***************************************************************************************
-changed: [cloud.ss.fish]
-
-TASK [Display apt update] ***************************************************************************************
-ok: [cloud.ss.fish] => {
-    "apt_output_update.stdout_lines": [
-        "Hit:1 http://security.ubuntu.com/ubuntu jammy-security InRelease",
-        "Hit:2 http://archive.ubuntu.com/ubuntu jammy InRelease",
-        "Hit:3 http://archive.ubuntu.com/ubuntu jammy-updates InRelease",
-        "Hit:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease",
-        "Reading package lists..."
-    ]
-}
-
-TASK [Upgrade all package] **************************************************************************************
-changed: [cloud.ss.fish]
-
-TASK [Display apt upgrade] **************************************************************************************
-ok: [cloud.ss.fish] => {
-    "apt_output_upgrade.stdout_lines": [
-        "Reading package lists...",
-        "Building dependency tree...",
-        "Reading state information...",
-        "Calculating upgrade...",
-        "The following packages have been kept back:",
-        "  ethtool firmware-sof-signed",
-        "0 to upgrade, 0 to newly install, 0 to remove and 2 not to upgrade."
-    ]
-}
-
-TASK [Check if reboot is needed] ********************************************************************************
-fatal: [cloud.ss.fish]: FAILED! => {"changed": false, "cmd": "needs-restart", "msg": "[Errno 2] No such file or directory: b'needs-restart'", "rc": 2, "stderr": "", "stderr_lines": [], "stdout": "", "stdout_lines": []}
-...ignoring
-
-TASK [Display reboot required status] ***************************************************************************
-ok: [cloud.ss.fish] => {
-    "msg": "Reboot is needed: no"
-}
-
-PLAY RECAP ******************************************************************************************************
-cloud.ss.fish              : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1
-
-(myenv) [ansible-playbook] % :
-
-
-```
-
-
+<details>
+  <summary>Click me</summary>
 
 ```
 (myenv) [devops-training] % :./run.sh u
@@ -814,6 +769,10 @@ PLAY RECAP *********************************************************************
 (myenv) [devops-training] % :
 
 ```
+
+</details>
+
+
 
 
 
