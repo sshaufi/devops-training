@@ -159,8 +159,7 @@ Details on usage for each section are provided below.
 &nbsp;
 
 ## Usage
-This section demonstrates how to utilize this repository and the `run.sh` command for automating and simplifying various tasks. 
-
+This section demonstrates how to utilize this repository and the `run.sh` command for automating and simplifying various tasks. Additionally, I provide links to the STDOUT of all the commands.
 ### Updates with Ansible
 
 The [ansible-playbook](ansible-playbook) directory contains playbooks for all three servers and the inventory file [hosts](hosts).
